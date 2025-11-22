@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- 
+    O <!DOCTYPE html> informa ao navegador que este documento é um HTML5.
+    Isso garante que o navegador renderize a página no modo padrão mais moderno.
+-->
+<html lang="pt-br">
+<!-- 
+    A tag <html> é a raiz do documento HTML.
+    O atributo lang="pt-br" define o idioma da página como português do Brasil,
+    o que é importante para acessibilidade (leitores de tela) e SEO (motores de busca).
+-->
+
+<head>
+    <!-- 
+        A seção <head> contém metadados sobre o documento.
+        Essas informações não são exibidas diretamente na página, mas configuram como ela se comporta.
+    -->
+    <meta charset="UTF-8">
+    <!-- 
+        Define a codificação de caracteres como UTF-8.
+        Isso permite que a página exiba corretamente caracteres especiais, como acentos e cedilha.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        A meta tag viewport é essencial para a responsividade.
+        Ela diz ao navegador para controlar as dimensões e a escala da página,
+        garantindo que ela se ajuste bem em dispositivos móveis (celulares, tablets).
+    -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 
+        A tag <link> conecta este arquivo HTML ao arquivo CSS externo (style.css).
+        É no arquivo CSS que definimos as cores, fontes e o layout da página.
+    -->
+    <title>DevTec</title>
+    <!-- 
+        A tag <title> define o título que aparece na aba do navegador.
+        Também é o título exibido nos resultados de busca do Google.
+    -->
+</head>
+
+<body>
+    <!-- 
+        A tag <body> contém todo o conteúdo visível da página:
+        textos, imagens, botões, etc.
+    -->
+    <header>
+        <!-- 
+            A tag <header> representa o cabeçalho da página ou de uma seção.
+            Geralmente contém o logotipo, título e navegação.
+        -->
+        <div class="header-container">
+            <!-- 
+                <div> é um container genérico usado para agrupar elementos.
+                A classe "header-container" será usada no CSS para estilizar este grupo.
+            -->
+            <h1>DevTec</h1>
+            <!-- 
+                <h1> é o título principal da página.
+                Deve haver apenas um <h1> por página para uma boa estrutura semântica.
+            -->
+            <div class="header-controls">
+                <!-- Agrupa os controles do cabeçalho: busca, ordenação e tema -->
+                <div class="search-wrapper">
+                    <!-- Envolve o campo de busca e o ícone -->
+                    <input type="text" id="input-busca" placeholder="Digite uma tecnologia de programação">
+                    <!-- 
+                        <input> cria um campo interativo.
+                        type="text": campo de texto.
+                        id="input-busca": identificador único usado pelo JavaScript para pegar o valor digitado.
+                        placeholder: texto de ajuda que aparece quando o campo está vazio.
+                    -->
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <!-- 
+                            <svg> é usado para desenhar gráficos vetoriais.
+                            Aqui estamos desenhando um ícone de lupa.
+                        -->
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <button id="botao-busca" class="botao">Buscar</button>
+                <!-- 
+                    <button> cria um botão clicável.
+                    id="botao-busca": usado no JavaScript para detectar o clique.
+                    class="botao": usado no CSS para dar estilo ao botão.
+                -->
+                <select id="select-ordenar" class="botao">
+                    <!-- 
+                        <select> cria um menu suspenso (dropdown).
+                        As opções dentro dele permitem ao usuário escolher como ordenar a lista.
+                    -->
+                    <option value="alfa_asc">A-Z</option>
+                    <option value="alfa_desc">Z-A</option>
+                    <option value="ano_desc">Ano (↓)</option>
+                    <option value="ano_asc">Ano (↑)</option>
+                    <option value="pop_desc">Popularidade (↓)</option>
+                    <option value="pop_asc">Popularidade (↑)</option>
+                </select>
+                <button id="theme-toggle" class="botao" aria-label="Alternar tema">
+                    <!-- Botão para trocar entre tema claro e escuro -->
+                    <span class="icon-sun">
+                        <!-- Ícone de sol para o tema claro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </span>
+                    <span class="icon-moon">
+                        <!-- Ícone de lua para o tema escuro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 
+            A tag <main> envolve o conteúdo principal da página.
+            É onde a lista de tecnologias será exibida.
+        -->
+        <div id="search-info"></div>
+        <!-- Div vazia onde o JavaScript vai escrever informações sobre a busca (ex: "2 resultados encontrados") -->
+
+        <section class="card-container"></section>
+        <!-- 
+            <section> define uma seção temática.
+            A classe "card-container" indica que aqui dentro serão criados os "cards" (cartões)
+            com as informações das tecnologias. O JavaScript vai preencher isso dinamicamente.
+        -->
+    </main>
+
+    <footer class="footer">
+        <!-- 
+            A tag <footer> define o rodapé da página.
+            Geralmente contém direitos autorais, links de contato, etc.
+        -->
+        <ul class="footer-links">
+            <!-- <ul> cria uma lista não ordenada (com bolinhas, por padrão). -->
+            <li>
+                <!-- <li> define um item da lista. -->
+                <a href="https://www.behance.net/jpqueiroz" target="_blank">Behance</a>
+                <!-- 
+                    <a> cria um link.
+                    href: o endereço para onde o link leva.
+                    target="_blank": abre o link em uma nova aba.
+                -->
+            </li>
+            <li><a href="https://github.com/jpauloothon" target="_blank">Github</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- 
+        A tag <script> conecta o arquivo JavaScript.
+        É colocada no final do <body> para garantir que todo o HTML já tenha sido carregado
+        antes do script tentar manipular os elementos da página.
+    -->
+</body>
+
+</html>

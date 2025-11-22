@@ -1,0 +1,563 @@
+/* 
+    Importa a fonte "Archivo" do Google Fonts.
+    Isso permite usar essa fonte específica em todo o site.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* 
+    O seletor universal (*) seleciona TODOS os elementos da página.
+    box-sizing: border-box; faz com que o padding e a borda sejam incluídos na largura total do elemento.
+    Isso facilita muito o cálculo de tamanhos e evita quebras de layout.
+*/
+* {
+    box-sizing: border-box;
+}
+
+/* 
+    :root define variáveis CSS globais.
+    É um lugar central para guardar cores e valores que serão usados em vários lugares.
+    Se precisarmos mudar a cor principal do site, mudamos apenas aqui.
+*/
+:root {
+    --primary-color: #183DFF;
+    /* Cor principal (azul) */
+    --bg-color: #FFFFFF;
+    /* Cor de fundo da página (branco) */
+    --card-bg-color: #ffffff;
+    /* Cor de fundo dos cards */
+    --card-border-color: #183DFF;
+    /* Cor da borda dos cards */
+    --text-color: #183DFF;
+    /* Cor do texto principal */
+    --button-bg-color: #183DFF;
+    /* Cor de fundo dos botões */
+    --button-text-color: #FFFFFF;
+    /* Cor do texto dos botões */
+    --input-hover-bg: #FFFFFF;
+    /* Cor de fundo do input ao passar o mouse */
+    --input-placeholder-color: #183DFF;
+    /* Cor do texto de ajuda do input */
+    --input-placeholder-hover-color: #183DFF;
+    /* Cor do texto de ajuda ao passar o mouse */
+}
+
+/* 
+    Define as cores para o TEMA ESCURO.
+    O seletor [data-theme="dark"] é ativado quando o JavaScript adiciona esse atributo ao <body>.
+    Aqui, redefinimos as variáveis para cores escuras.
+*/
+[data-theme="dark"] {
+    --primary-color: #FFFFFF;
+    /* Branco vira a cor principal */
+    --bg-color: #183DFF;
+    /* Azul vira o fundo */
+    --card-bg-color: #183DFF;
+    --card-border-color: #FFFFFF;
+    --text-color: #FFFFFF;
+    --button-bg-color: #FFFFFF;
+    --button-text-color: #183DFF;
+    --input-hover-bg: #183DFF;
+    --input-placeholder-color: #FFFFFF;
+    --input-placeholder-hover-color: #FFFFFF;
+}
+
+/* 
+    Estilos gerais do corpo da página.
+*/
+body {
+    margin: 0;
+    /* Remove a margem padrão do navegador */
+    background: var(--bg-color);
+    /* Usa a cor de fundo definida na variável */
+    color: var(--text-color);
+    /* Usa a cor de texto definida na variável */
+    font-family: "Archivo", sans-serif;
+    /* Define a fonte principal */
+    transition: background-color 0.3s, color 0.3s;
+    /* Animação suave ao trocar de tema */
+}
+
+/* 
+    Estilos do cabeçalho (topo da página).
+*/
+header {
+    width: 100%;
+    /* Ocupa toda a largura */
+    position: sticky;
+    /* Fixa o cabeçalho no topo ao rolar a página */
+    top: 0;
+    /* Cola no topo */
+    background: var(--bg-color);
+    z-index: 10;
+    /* Garante que o cabeçalho fique acima de outros elementos */
+    border-bottom: 1px solid var(--primary-color);
+    /* Linha fina na parte inferior */
+    transition: background-color 0.3s, border-bottom 0.3s;
+}
+
+/* 
+    Container interno do cabeçalho para limitar a largura do conteúdo.
+*/
+.header-container {
+    max-width: 1600px;
+    /* Largura máxima do conteúdo */
+    margin: 0 auto;
+    /* Centraliza o container na tela */
+    padding: 2rem 1rem;
+    /* Espaçamento interno (cima/baixo, esquerda/direita) */
+    display: flex;
+    /* Usa Flexbox para alinhar os itens */
+    align-items: center;
+    /* Alinha verticalmente ao centro */
+    justify-content: space-between;
+    /* Espalha os itens (título na esquerda, controles na direita) */
+    gap: 1rem;
+    /* Espaço entre os itens */
+}
+
+/* 
+    Estilo do título principal (H1) no cabeçalho.
+*/
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 700;
+    /* Negrito */
+    white-space: nowrap;
+    /* Impede que o texto quebre em duas linhas */
+    flex-shrink: 0;
+    /* Impede que o título encolha se faltar espaço */
+    color: var(--primary-color);
+    cursor: pointer;
+    /* Mostra a mãozinha ao passar o mouse */
+}
+
+/* 
+    Grupo de controles (busca, botões) no cabeçalho.
+*/
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 1;
+    /* Ocupa o espaço restante disponível */
+    justify-content: flex-end;
+    /* Alinha tudo à direita */
+}
+
+/* 
+    Envoltório do campo de busca para posicionar o ícone.
+*/
+.search-wrapper {
+    position: relative;
+    /* Permite posicionar o ícone absolutamente dentro dele */
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    max-width: 30rem;
+    /* Largura máxima da barra de busca */
+    margin-right: .5rem;
+}
+
+/* 
+    Ícone de lupa dentro da busca.
+*/
+.search-icon {
+    position: absolute;
+    /* Posiciona livremente dentro do pai (search-wrapper) */
+    right: 1rem;
+    /* Cola na direita */
+    color: var(--primary-color);
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+/* 
+    Estilo do campo de input (caixa de texto).
+*/
+div input {
+    padding: 1rem 3rem 1rem 1rem;
+    /* Espaço interno (direita maior por causa do ícone) */
+    border-radius: 0rem;
+    /* Cantos retos */
+    border: 1px solid var(--primary-color);
+    background: var(--bg-color);
+    font-family: inherit;
+    /* Herda a fonte do body */
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    /* Animação suave para hover e focus */
+    width: 100%;
+    color: var(--text-color);
+    height: 3.5rem;
+}
+
+/* 
+    Estilo do texto de ajuda (placeholder) dentro do input.
+*/
+div input::placeholder {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--input-placeholder-color);
+    transition: color 0.2s ease;
+}
+
+div input:hover::placeholder {
+    color: var(--input-placeholder-hover-color);
+}
+
+/* 
+    Efeito ao passar o mouse sobre o input.
+*/
+div input:hover {
+    background-color: var(--input-hover-bg);
+}
+
+/* 
+    Efeito quando o input está selecionado (focado).
+*/
+div input:focus {
+    outline: none;
+    /* Remove a borda padrão do navegador */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.1rem var(--primary-color);
+    /* Adiciona um brilho ao redor */
+}
+
+/* 
+    Estilos compartilhados para botões e o botão de tema.
+*/
+.botao,
+#theme-toggle {
+    padding: 1rem 2rem;
+    border-radius: 0rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: transparent;
+    /* Fundo transparente por padrão */
+    color: var(--button-bg-color);
+    /* Cor do texto igual à cor de fundo definida */
+    border: 1px solid var(--button-bg-color);
+    height: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+    Hover dos botões: inverte as cores.
+*/
+.botao:hover,
+#theme-toggle:hover {
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+}
+
+/* 
+    Efeito de clique (active): diminui levemente o botão.
+*/
+.botao:active,
+#theme-toggle:active {
+    transform: scale(0.98);
+}
+
+/* 
+    Foco nos botões e no select de ordenação.
+*/
+.botao:focus,
+#select-ordenar:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.1rem var(--primary-color);
+}
+
+/* 
+    Área principal do conteúdo.
+*/
+main {
+    padding: 2rem 0;
+}
+
+/* 
+    Texto de informação da busca ("X resultados encontrados").
+*/
+#search-info {
+    display: none;
+    /* Começa escondido */
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    padding: 1rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    max-width: 1600px;
+}
+
+/* 
+    Container dos cards (grade).
+*/
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite que os cards quebrem para a linha de baixo */
+    justify-content: center;
+    /* Centraliza os cards */
+    gap: 1.5rem;
+    /* Espaço entre os cards */
+    padding: 0 1rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* 
+    Estilo individual de cada card.
+*/
+.card {
+    border-radius: 0px;
+    padding: 1.5rem;
+    transition: transform 0.1s ease;
+    height: 400px;
+    /* Altura fixa */
+    display: flex;
+    flex-direction: column;
+    /* Organiza o conteúdo em coluna */
+    justify-content: space-between;
+    /* Espalha o conteúdo verticalmente */
+    flex: 1 1 calc(25% - 1.5rem);
+    /* Tenta ocupar 25% da largura (4 por linha) */
+    min-width: 280px;
+    /* Largura mínima para não ficar muito estreito */
+    border: 1px solid var(--primary-color);
+}
+
+/* 
+    Efeito de "levantar" o card ao passar o mouse.
+*/
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 
+    Título dentro do card.
+*/
+.card h2 {
+    margin-top: 0;
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* 
+    Parágrafos dentro do card.
+*/
+.card p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    /* Altura da linha para melhor leitura */
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.card p strong {
+    color: var(--primary-color);
+    font-weight: 400;
+}
+
+/* 
+    Link "Website" dentro do card.
+*/
+.card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    /* Remove o sublinhado padrão */
+    font-weight: 500;
+    align-self: flex-start;
+    /* Alinha à esquerda */
+    margin-top: auto;
+    /* Empurra para o fundo do card */
+    transition: color 0.2s;
+}
+
+.card a:hover {
+    text-decoration: underline;
+    /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* 
+    Container das tags dentro do card.
+*/
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* 
+    Estilo das tags individuais.
+*/
+.tags-container span {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+/* 
+    Hover das tags.
+*/
+.tags-container span:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+/* 
+    Rodapé da página.
+*/
+.footer {
+    position: relative;
+    margin-top: 2rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    padding: 15px 20px;
+    border-top: 1px solid var(--primary-color);
+    font-size: 0.8rem;
+    transition: background-color 0.3s, color 0.3s, border-top 0.3s;
+}
+
+.footer-links {
+    list-style: none;
+    /* Remove as bolinhas da lista */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 
+    Ajustes específicos para o botão de tema.
+*/
+#theme-toggle {
+    padding: 1rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle svg {
+    transition: all 0.3s ease;
+}
+
+#theme-toggle .icon-sun,
+#theme-toggle .icon-moon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+    MEDIA QUERIES: Responsividade
+    Ajusta o layout para telas menores.
+*/
+
+/* Telas até 1024px (Tablets e Laptops pequenos) */
+@media (max-width: 1024px) {
+    header h1 {
+        font-size: 1.2rem;
+        /* Diminui o título */
+    }
+
+    div input {
+        font-size: 1rem;
+        height: 3rem;
+        /* Diminui a altura do input */
+    }
+
+    .botao,
+    #theme-toggle {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        height: 3rem;
+        /* Diminui a altura dos botões */
+    }
+}
+
+/* Telas até 768px (Tablets menores e Celulares grandes) */
+@media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        /* Permite quebrar linha no cabeçalho */
+        justify-content: center;
+    }
+
+    header h1 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .header-controls {
+        display: grid;
+        /* Muda para Grid para melhor controle */
+        grid-template-columns: 1fr auto;
+        /* Input ocupa o resto, botão auto */
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .search-wrapper {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    #select-ordenar {
+        width: 100%;
+        /* Select ocupa largura total */
+    }
+}
+
+/* Telas até 480px (Celulares) */
+@media (max-width: 480px) {
+
+    div input {
+        height: 2.5rem;
+        /* Input ainda menor */
+    }
+
+    .botao,
+    #theme-toggle {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        height: 2.5rem;
+        /* Botões ainda menores */
+    }
+
+    .footer {
+        display: none;
+        /* Esconde o rodapé em celulares muito pequenos */
+    }
+}
