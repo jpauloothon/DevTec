@@ -2,6 +2,8 @@
 
 Projeto desenvolvido durante a **Imersão Dev com Google Gemini 10ª Edição**. O **DevTec** é uma aplicação web interativa que funciona como um catálogo de tecnologias, permitindo aos usuários pesquisar e descobrir detalhes sobre linguagens de programação, frameworks e ferramentas.
 
+Link da aplicação: https://jpauloothon.github.io/DevTec/
+
 ## 🚀 Funcionalidades
 
 *   **Busca Inteligente:** Pesquise tecnologias pelo nome, descrição ou categorias.
@@ -34,3 +36,4 @@ O projeto foi construído com foco em código limpo e didático:
 
 ---
 Desenvolvido por
+
